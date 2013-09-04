@@ -1,6 +1,6 @@
 /**
  * Author:      Matt Hinchliffe <www.maketea.co.uk>
- * Modified:    03/11/2012
+ * Modified:    04/09/2013
  * Description: Simple jQuery slideshow
  * Example:
  * <div class="slideshow">
@@ -60,7 +60,7 @@
 			margin-right:5px;
 		}
 
-/* skip */
+/* next/prev skip buttons */
 .slides-next,
 .slides-prev {
 	position:absolute;
@@ -81,16 +81,16 @@
 	cursor:auto;
 }
 
-/* pause */
-.slides-pause {
+/* start/stop autoplay button */
+.slides-start-stop {
 	position:absolute;
 	right:1em;
 	bottom:1em;
 	padding:0 .5em;
 }
-.slides-pause.pause:hover {
+.slides-start-stop.paused:hover {
 	background:#d21111;
 }
-.slides-pause.play:hover {
+.slides-start-stop.playing:hover {
 	background:#11d272;
 }

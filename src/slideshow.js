@@ -14,7 +14,7 @@
         // Controls
         skip: true,                 // Render next/previous skip buttons.
         pagination: true,           // Render pagination.
-        pause: false,               // Render a pause button (if autoplay is also enabled).
+        startStop: false,           // Render a start/stop autoplay button (if autoplay is enabled).
         gestures: false,            // Allow touch swipe events to control previous/next.
         auto: 6000,                 // Autoplay timeout in milliseconds. Set to false for no autoplay.
         autostop: true,             // Stop autoplay when user manually changes slide.
@@ -22,7 +22,7 @@
         loop: false,                // Allow slideshow to loop.
         nextText: 'Next',           // Text to display on next skip button.
         previousText: 'Previous',   // Text to display on previous skip button.
-        pauseText: 'Pause',         // Text to display on pause button when playing.
+        stopText: 'Stop',           // Text to display on pause button when auto-playing.
         playText: 'Play',           // Text to display on pause button when paused.
 
         // Transitions
@@ -81,28 +81,25 @@
             this.$target.append(this.$next, this.$prev);
         }
 
-        // Create pause button
-        if ( this.opts.pause && this.opts.auto ) {
-            this.$pause = $('<a href="#" class="slides-pause pause">' + this.opts.pauseText + '</a>');
+        // Create start/stop autoplay button
+        if ( this.opts.startStop && this.opts.auto ) {
+            this.$startStop = $('<a href="#" class="slides-start-stop playing">' + this.opts.stopText + '</a>');
 
-            this.$pause.on('click', function(e) {
+            // This doesn't account for state
+            this.$startStop.on('click', function(e) {
                 e.preventDefault();
 
                 if ( self.stopped ) {
-                    return;
-                }
-
-                if ( self.paused ) {
-                    self.$pause.text(self.opts.pauseText).removeClass('play').addClass('pause');
+                    self.$startStop.text(self.opts.stopText).removeClass('playing').addClass('stopped');
                     self.play();
                 }
                 else {
-                    self.$pause.text(self.opts.playText).removeClass('pause').addClass('play');
-                    self.pause();
+                    self.$startStop.text(self.opts.playText).removeClass('stopped').addClass('playing');
+                    self.stop();
                 }
             });
 
-            this.$target.append(this.$pause);
+            this.$target.append(this.$startStop);
         }
 
         // Controls
