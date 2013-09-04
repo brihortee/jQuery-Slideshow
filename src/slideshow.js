@@ -14,13 +14,16 @@
         // Controls
         skip: true,                 // Render next/previous skip buttons.
         pagination: true,           // Render pagination.
+        pause: false,               // Render a pause button (if autoplay is also enabled).
         gestures: false,            // Allow touch swipe events to control previous/next.
         auto: 6000,                 // Autoplay timeout in milliseconds. Set to false for no autoplay.
         autostop: true,             // Stop autoplay when user manually changes slide.
         hoverPause: false,          // Pause autoplay on hover.
         loop: false,                // Allow slideshow to loop.
-        nextText: 'Next',           // Text to display on next skip button
-        previousText: 'Previous',   // Text to display on previous skip button
+        nextText: 'Next',           // Text to display on next skip button.
+        previousText: 'Previous',   // Text to display on previous skip button.
+        pauseText: 'Pause',         // Text to display on pause button when playing.
+        playText: 'Play',           // Text to display on pause button when paused.
 
         // Transitions
         transition: 'scroll',       // Specify transition.
@@ -78,6 +81,30 @@
             this.$target.append(this.$next, this.$prev);
         }
 
+        // Create pause button
+        if ( this.opts.pause && this.opts.auto ) {
+            this.$pause = $('<a href="#" class="slides-pause pause">' + this.opts.pauseText + '</a>');
+
+            this.$pause.on('click', function(e) {
+                e.preventDefault();
+
+                if ( self.stopped ) {
+                    return;
+                }
+
+                if ( self.paused ) {
+                    self.$pause.text(self.opts.pauseText).removeClass('play').addClass('pause');
+                    self.play();
+                }
+                else {
+                    self.$pause.text(self.opts.playText).removeClass('pause').addClass('play');
+                    self.pause();
+                }
+            });
+
+            this.$target.append(this.$pause);
+        }
+
         // Controls
         if ( this.opts.pagination || this.opts.skip ) {
 
@@ -95,10 +122,8 @@
 
         this.redraw();
 
-        //
         // Gestures modified from Zepto.js <https://github.com/madrobby/zepto/blob/master/src/touch.js>
         // This will be buggy on iOS6 but you can try and work around it: <https://gist.github.com/3755461>
-        //
         if ( this.opts.gestures && 'ontouchstart' in document.documentElement ) {
             this.target.addEventListener('touchstart', function( e ) {
                 self.t = {

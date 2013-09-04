@@ -12,8 +12,8 @@
 	<link rel="stylesheet" href="css/slideshow.css" />
 
 	<!--
-	jQuery Slideshow by Matt Hinchliffe <http://www.maketea.co.uk>
-	Find out more at GitHub <http://github.com/i-like-robots/jQuery-Slideshow>
+		jQuery Slideshow by Matt Hinchliffe <http://www.maketea.co.uk>
+		Find out more at GitHub <http://github.com/i-like-robots/jQuery-Slideshow>
 	-->
 
 	<!-- Google Analytics tracking code -->
@@ -30,7 +30,10 @@
 	<div id="container">
 
 		<section id="introduction">
-			<h1>jQuery Slideshow</h1>
+
+			<h1>
+				jQuery Slideshow
+			</h1>
 			<p>
 				<a href="http://github.com/i-like-robots/jQuery-Slideshow">jQuery Slideshow</a> is a performant and
 				developer friendly image slideshow and content carousel plugin with support for touch gestures. 2KB when
@@ -40,7 +43,7 @@
 
 			<div id="example">
 
-				<div class="slideshow" data-transition="crossfade" data-loop="true" data-skip="false">
+				<div class="slideshow" data-transition="crossfade" data-loop="true" data-skip="false" data-pause="true">
 					<ul class="carousel">
 						<li class="slide">
 							<img src="http://placebox.es/440/200/d97ef2/f5f5f5" alt="" width="440" height="200" />
@@ -100,7 +103,9 @@
 		<hr />
 
 		<section id="setup">
-			<h2>Setup</h2>
+			<h2>
+				Setup
+			</h2>
 			<p>
 				Setup is not restricted to a fixed markup pattern but is dependent on class names. Theoretically almost
 				any content can be placed within a slide. If you are using images always specify the width and height.
@@ -135,7 +140,9 @@
 		<hr />
 
 		<section id="options">
-			<h2>Options</h2>
+			<h2>
+				Options
+			</h2>
 			<p>
 				Global options can be specified via the standard jQuery plugin interface or as data attributes on
 				individual slideshow elements.
@@ -149,7 +156,9 @@
 </pre>
 			</figure>
 
-			<h3>Setup</h3>
+			<h3>
+				Setup
+			</h3>
 			<dl id="options-setup">
 				<dt>carousel</dt>
 				<dd>
@@ -173,7 +182,9 @@
 				</dd>
 			</dl>
 
-			<h3>Controls</h3>
+			<h3>
+				Controls
+			</h3>
 			<dl id="options-controls">
 				<dt>skip</dt>
 				<dd>
@@ -182,6 +193,10 @@
 				<dt>pagination</dt>
 				<dd>
 					Render pagination. Default: <code>true</code>.
+				</dd>
+				<dt>pause</dt>
+				<dd>
+					Render a pause button (if autoplay is also enabled). Default: <code>false</code>.
 				</dd>
 				<dt>gestures</dt>
 				<dd>
@@ -211,9 +226,19 @@
 				<dd>
 					Text to display on previous skip button. Default: <code>"Previous"</code>.
 				</dd>
+				<dt>pauseText</dt>
+				<dd>
+					Text to display on pause button when playing. Default: <code>"Pause"</code>.
+				</dd>
+				<dt>playText</dt>
+				<dd>
+					Text to display on pause button when paused. Default: <code>"Play"</code>.
+				</dd>
 			</dl>
 
-			<h3>Transitions</h3>
+			<h3>
+				Transitions
+			</h3>
 			<dl id="options-transitions">
 				<dt>transition</dt>
 				<dd>
@@ -233,7 +258,9 @@
 				</dd>
 			</dl>
 
-			<h3>Callbacks</h3>
+			<h3>
+				Callbacks
+			</h3>
 			<dl id="options-callbacks">
 				<dt>onupdate</dt>
 				<dd>
@@ -249,7 +276,9 @@
 		<hr />
 
 		<section id="api">
-			<h2>Public methods</h2>
+			<h2>
+				Public methods
+			</h2>
 			<dl>
 				<dt>.hasNext()</dt>
 				<dd>
@@ -296,7 +325,7 @@
 		<img style="position:absolute; top:0; right:0; border:0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" />
 	</a>
 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="dist/slideshow.js"></script>
 	<script>
 		$(function()

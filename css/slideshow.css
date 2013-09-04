@@ -80,3 +80,17 @@
 	opacity:.5;
 	cursor:auto;
 }
+
+/* pause */
+.slides-pause {
+	position:absolute;
+	right:1em;
+	bottom:1em;
+	padding:0 .5em;
+}
+.slides-pause.pause:hover {
+	background:#d21111;
+}
+.slides-pause.play:hover {
+	background:#11d272;
+}
